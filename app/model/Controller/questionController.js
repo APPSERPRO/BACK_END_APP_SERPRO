@@ -3,6 +3,8 @@ const uri = "mongodb+srv://saberProPoli:6sXyfujsZ55c4GF@cluster.75pse.mongodb.ne
 const questionController = {};
 
 questionController.get = function(req, res) {
+    let modulo = Number(req.params.modulo);
+    console.log(modulo)
     MongoClient.connect(uri, (err, db) => {
         if (err) throw err;
         const dbo = db.db("SaberPro");
