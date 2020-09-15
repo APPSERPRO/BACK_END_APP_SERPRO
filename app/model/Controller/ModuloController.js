@@ -18,4 +18,13 @@ ModuloController.get = function(req, res) {
 
 }
 
+/* 
+    {
+    "Identificador": number
+    "area_conocimiento": string,
+    "tipo": string,
+    "descripcion": string,
+    "evalua": string
+}
+*/
 module.exports = ModuloController;
