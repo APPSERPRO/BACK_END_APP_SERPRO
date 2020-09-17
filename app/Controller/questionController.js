@@ -1,8 +1,9 @@
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://saberProPoli:6sXyfujsZ55c4GF@cluster.75pse.mongodb.net/";
-const QuestionController = {};
+require('../database/db.connection');
 
-QuestionController.findQuestionByModule = function(req, res) {
+//CONTROLLER'S STATEMENT
+const QuestionController = {};
+//SIN CAMBIOS, AUN NO ESTA EN EL FORMATO DE MONGOOSE
+QuestionController.get = function(req, res) {
     let modulo = req.params.modulo;
     MongoClient.connect(uri, (err, db) => {
         if (err) throw err;
@@ -50,4 +51,4 @@ QuestionController.saveQuestion = function(req, res) {
         });*/
 }
 
-module.exports = QuestionController;
+module.exports = QuestionController; 
