@@ -1,6 +1,5 @@
 require('../database/db.connection');
-const { watch } = require('../model/Modulo');
-const Modulo = require('../model/Modulo');
+const Modulo = require('../model/icfesModule.model');
 
 //CONTROLLER'S STATEMENT
 const ModuloController = {};

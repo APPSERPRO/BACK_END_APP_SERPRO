@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 //SCHEME OF THE MODULE COLLECTION
-const ModuloSchema = new Schema ({
+const icfesModuleSchema = new Schema ({
     identificador: Number,
     area_conocimiento: String,
     tipo: String,
@@ -11,4 +11,4 @@ const ModuloSchema = new Schema ({
 });
 
 
-module.exports = mongoose.model('Modulos',ModuloSchema);
+module.exports = mongoose.model('icfes_modules',icfesModuleSchema);
