@@ -5,8 +5,13 @@ const question = require('./Controller/question.controller');
 const modulo = require('./Controller/icfesModule.controller');
 
 //ADDRESSING LIST
-router.get('/question', question.get);
-router.post('/question/add', question.post);
+
+//QUESTION 
+router.get('/question', question.getAll);
+router.get('/question/:icfesModule', question.getByIcfesModul);
+router.post('/question', question.post);
+
+
 router.get('/modulos', modulo.get);
 
 
