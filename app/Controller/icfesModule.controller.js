@@ -1,12 +1,12 @@
 require('../database/db.connection');
-const Modulo = require('../model/icfesModule.model');
+const IcfesModule = require('../model/icfesModule.model');
 
 //CONTROLLER'S STATEMENT
 const ModuloController = {};
 
 ModuloController.get = async function(req,res){
     try{
-        const data = await Modulo.find();
+        const data = await IcfesModule.find();
         res.json(data);
     }catch(err){
         console.log(err);
@@ -18,19 +18,21 @@ ModuloController.get = async function(req,res){
 
 ModuloController.post = async function(req,res){
 
-    if(!identificador){
-        res.status(400).send('Por favor escribe un identificador')
-    }else {
-        const newModulo = new Modulo({
-            identificador: req.body.identificador,
-            area_conocimiento: req.body.area_conocimiento,
-            tipo: req.body.tipo,
-            descripcion: req.body.descripcion,
-            evalua: req.body.evalua
+    if(req.body){
+        console.log(req.body);
+        const icfesModules = new IcfesModule(req.body);
+        icfesModules.save((err,response)=>{
+            if(err){
+                response.status(500).send({
+                    message:'error insertando preguntas'
+                });
+            }
+            res.send(response);
         });
-        console.log(newModulo);
-        await newModulo.save();
-        res.send('Ok')
+    }else {
+        res.status(500).send({
+            message:'error, the body is empty'
+        });
     }
 }
 

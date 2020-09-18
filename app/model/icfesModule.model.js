@@ -6,7 +6,7 @@ const icfesModuleSchema = new Schema ({
     identificador: Number,
     area_conocimiento: String,
     tipo: String,
-    descripcion: String,
+    description: String,
     evalua: String
 });
 
