@@ -4,7 +4,7 @@ const IcfesModule = require('../model/icfesModule.model');
 //CONTROLLER'S STATEMENT
 const ModuloController = {};
 
-ModuloController.get = async function(req,res){
+ModuloController.getAll = async function(req,res){
     try{
         const data = await IcfesModule.find();
         res.json(data);
