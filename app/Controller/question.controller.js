@@ -10,8 +10,8 @@ const QuestionController = {};
 //FIND AND RETURN ALL QUESTIONS
 QuestionController.getAll = async function(req, res) {
    try{
-        const preguntas = await Question.find();
-        res.json(preguntas);
+        const questions = await Question.find();
+        res.json(questions);
 
    }catch{
         console.log(err);
@@ -26,8 +26,8 @@ QuestionController.getByIcfesModul = async function(req, res) {
     const icfesModule = req.params.icfesModule;
 
     try{
-         const preguntas = await Question.find({"icfesModule":icfesModule});
-         res.json(preguntas);
+         const questions = await Question.find({"icfesModule":icfesModule});
+         res.json(questions);
  
     }catch{
          console.log(err);
@@ -54,8 +54,33 @@ QuestionController.post = async function(req,res){
         res.status(500).send({
             message:'error, the body is empty'
         });
+    }  
+};
+
+//SEARCH AND RETURN RANDOM QUESTIONS IN A DEFINED QUANTITY AND MODULE
+QuestionController.getRandomByModule = async function(req, res) {
+    const icfesModule = parseInt(req.params.icfesModule);
+    const numberQuestions = parseInt(req.params.amount);
+
+    try{
+         const questions = await Question.aggregate(
+             [
+                {
+                    $match: {icfesModule: icfesModule}
+                }, 
+                {
+                   $sample: {size: numberQuestions}
+                }
+             ]
+         );
+         res.json(questions);
+ 
+    }catch(err){
+         console.log(err);
+         res.status(500).send({
+             message: 'some error ocurred'
+         });
     }
-   
-}
+ };
 
 module.exports = QuestionController; 

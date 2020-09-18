@@ -3,11 +3,11 @@ const {Schema} = mongoose;
 
 //SCHEME OF THE MODULE COLLECTION
 const icfesModuleSchema = new Schema ({
-    identificador: Number,
-    area_conocimiento: String,
-    tipo: String,
+    icfesModule: Number,
+    knowledgeArea: String,
+    type: String,
     description: String,
-    evalua: String
+    evaluate: String
 });
 
 
