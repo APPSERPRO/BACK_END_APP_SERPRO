@@ -1,21 +1,10 @@
 require('../database/db.connection');
 const IcfesTest = require('../model/icfesTest.model');
+const Question = require('../model/question.model');
 
 const icfesTestController = {};
 
-icfesTestController.getAll = async function(req, res) {
-    try{
-         const tests = await IcfesTest.find();
-         res.json(tests);
- 
-    }catch{
-         console.log(err);
-         res.status(500).send({
-             message: 'some error ocurred'
-         });
-    }
-};
-
+//CREATING A NEW TEST
 icfesTestController.post = async function(req,res){
 
     if(req.body){
@@ -34,6 +23,17 @@ icfesTestController.post = async function(req,res){
             message:'error, the body is empty'
         });
     }
-}
+};
+
+//SEARCH, CONSULTATION AND RETURN OF THE QUESTIONS RELATED TO EACH TEST
+icfesTestController.getTestWhitQuestions = async function(req, res) {
+
+    IcfesTest.find(function(err,Tests){
+        Question.populate(Tests,{path:'questions'},function(err,Tests){
+            res.status(200).send(Tests);
+        })
+    });    
+};
+
 
 module.exports = icfesTestController;

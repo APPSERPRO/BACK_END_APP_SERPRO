@@ -18,7 +18,7 @@ router.get('/module', icfesModule.getAll);
 router.post('/module', icfesModule.post);
 
 //ICFES TEST
-router.get('/icfesTest',icfesTest.getAll);
+router.get('/icfesTest',icfesTest.getTestWhitQuestions);
 router.post('/icfesTest', icfesTest.post);
 
 module.exports = router;
