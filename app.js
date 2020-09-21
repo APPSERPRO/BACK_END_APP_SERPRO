@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 //MAIN ROUTE
 app.use('/', router);
 
-
-app.listen(8082, () => {
-    console.log("SERVER IS LISTEN ON PORT 8082")
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log("SERVER IS LISTEN ON PORT:" , PORT);
 });
