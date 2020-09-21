@@ -15,10 +15,13 @@ router.post('/question', question.post);
 
 //MODULE
 router.get('/module', icfesModule.getAll);
+router.get('/moduleWithTests', icfesModule.getModulesWithTests);
 router.post('/module', icfesModule.post);
+router.post('/moduleAll', icfesModule.saveAll);
 
 //ICFES TEST
-router.get('/icfesTest',icfesTest.getTestWhitQuestions);
+router.get('/icfesTest', icfesTest.getTestWhitQuestions);
+router.get('/icfesTest/:module', icfesTest.getTestByModule);
 router.post('/icfesTest', icfesTest.post);
 
 module.exports = router;
