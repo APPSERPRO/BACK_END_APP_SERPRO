@@ -20,7 +20,8 @@ router.post('/module', icfesModule.post);
 router.post('/moduleAll', icfesModule.saveAll);
 
 //ICFES TEST
-router.get('/icfesTest', icfesTest.getTestWhitQuestions);
+router.get('/icfesTest', icfesTest.getAllTestWhitQuestions);
+router.get('/icfesTest/:test', icfesTest.getTestWhitQuestions);
 router.get('/icfesTest/:module', icfesTest.getTestByModule);
 router.post('/icfesTest', icfesTest.post);
 
