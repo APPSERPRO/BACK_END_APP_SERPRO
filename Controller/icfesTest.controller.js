@@ -45,7 +45,7 @@ icfesTestController.post = async function(req, res) {
 //SEARCH, CONSULTATION AND RETURN OF THE QUESTIONS RELATED TO EACH TEST
 icfesTestController.getTestWhitQuestions = async function(req, res) {
 
-    const test = req.params.test;
+    const test = req.params.testId;
 
     IcfesTest.find({_id: test},function(err, Tests) {
         Question.populate(Tests, { path: 'questions' }, function(err, Tests) {
