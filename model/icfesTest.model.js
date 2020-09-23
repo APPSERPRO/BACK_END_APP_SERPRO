@@ -5,6 +5,8 @@ const {Schema} = mongoose;
 
 //SCHEME OF THE TEST COLLECTION
 const icfesTestSchema = new Schema ({
+    title: String,
+    description: String,
     module: Number,
     questions: [{type: ObjectId, ref: Questions}]
 });
