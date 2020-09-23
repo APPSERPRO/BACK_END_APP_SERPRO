@@ -1,6 +1,4 @@
 require('../database/db.connection');
-const { response } = require('express');
-const mongoose = require('mongoose');
 const Question = require('../model/question.model');
 
 

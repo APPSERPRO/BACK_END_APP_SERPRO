@@ -22,7 +22,7 @@ router.post('/moduleAll', icfesModule.saveAll);
 //ICFES TEST
 router.get('/icfesTest', icfesTest.getAllTestWhitQuestions);
 router.get('/icfesTest/:testId', icfesTest.getTestWhitQuestions);
-router.get('/icfesTest/:module', icfesTest.getTestByModule);
+router.get('/icfesTest/module/:moduleId', icfesTest.getTestByModule);
 router.post('/icfesTest', icfesTest.post);
 
 module.exports = router;
