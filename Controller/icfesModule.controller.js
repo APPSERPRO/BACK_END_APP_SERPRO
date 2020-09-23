@@ -1,9 +1,11 @@
 require('../database/db.connection');
 const IcfesModule = require('../model/icfesModule.model');
+const icfesTestModel = require('../model/icfesTest.model');
 
 //CONTROLLER'S STATEMENT
 const ModuloController = {};
 
+//RETURN ALL MODULES
 ModuloController.getAll = async function(req, res) {
     try {
         const data = await IcfesModule.find();
@@ -16,23 +18,15 @@ ModuloController.getAll = async function(req, res) {
     }
 }
 
+//RETURN MODULE WHIT TESTID
 ModuloController.getModulesWithTests = async function(req, res) {
     try {
-        const data = await IcfesModule.find();
-        let modulesWithTest = [];
-        for (let item of data) {
-            let listTests = await IcfesModule.find({ module: item.icfesModule });
-            modulesWithTest.push({
-                _id: item._id,
-                icfesModule: item.icfesModule,
-                knowledgeArea: item.knowledgeArea,
-                type: item.type,
-                description: item.description,
-                evaluate: item.evaluate,
-                listTest: listTests
+        icfesTestModel.find(function(err, Modules) {
+            icfesTestModel.populate(Modules, { path: 'moduleId' }, function(err, Tests) {
+                res.status(200).send(Modules);
             })
-        }
-        res.json(modulesWithTest);
+        });
+
     } catch (err) {
         console.log(err);
         res.status(500).send({
@@ -41,6 +35,7 @@ ModuloController.getModulesWithTests = async function(req, res) {
     }
 }
 
+//CREATE A NEW MODULE
 ModuloController.post = async function(req, res) {
 
     if (req.body) {
@@ -62,6 +57,7 @@ ModuloController.post = async function(req, res) {
     }
 }
 
+//CREATE A NEW MODULE BY A LIST
 ModuloController.saveAll = async function(req, res) {
 
     if (req.body) {
@@ -81,6 +77,7 @@ ModuloController.saveAll = async function(req, res) {
     }
 }
 
+//DELETE MODULE
 ModuloController.delete = async function(req, res) {
     try {
         const delModul = await Modulo.remove();

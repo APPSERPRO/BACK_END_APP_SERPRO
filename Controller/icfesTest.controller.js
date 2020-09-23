@@ -1,16 +1,17 @@
 require('../database/db.connection');
+const { ObjectId } = require('mongodb');
 const icfesTestModel = require('../model/icfesTest.model');
 const IcfesTest = require('../model/icfesTest.model');
 const Question = require('../model/question.model');
 
 const icfesTestController = {};
 
-//CREATING A NEW TEST
+//RETURN 
 icfesTestController.getTestByModule = async function(req, res) {
     try {
-        const module = req.params.moduleId;
+        const moduleId = req.params.moduleId;
         const data = await icfesTestModel.find({
-            module: module
+           moduleId: ObjectId(moduleId)
         });
         res.send(data);
     } catch (err) {
@@ -22,6 +23,7 @@ icfesTestController.getTestByModule = async function(req, res) {
 
 }
 
+//CREATING A NEW TEST
 icfesTestController.post = async function(req, res) {
 
     if (req.body) {

@@ -1,4 +1,5 @@
 require('../database/db.connection');
+const { ObjectId } = require('mongodb');
 const Question = require('../model/question.model');
 
 
@@ -21,10 +22,10 @@ QuestionController.getAll = async function(req, res) {
 
 //FIND AND RETURN ALL THE QUESTIONS OF A MODULE
 QuestionController.getByIcfesModul = async function(req, res) {
-    const icfesModule = req.params.icfesModule;
+    const icfesModuleId = req.params.icfesModuleId;
 
     try{
-         const questions = await Question.find({"icfesModule":icfesModule});
+         const questions = await Question.find({"icfesModuleId":icfesModuleId});
          res.json(questions);
  
     }catch{
@@ -57,21 +58,19 @@ QuestionController.post = async function(req,res){
 
 //SEARCH AND RETURN RANDOM QUESTIONS IN A DEFINED QUANTITY AND MODULE
 QuestionController.getRandomByModule = async function(req, res) {
-    const icfesModule = parseInt(req.params.icfesModule);
+    const icfesModule = req.params.icfesModuleId;
     const numberQuestions = parseInt(req.params.amount);
 
     try{
-         const questions = await Question.aggregate(
-             [
-                {
-                    $match: {icfesModule: icfesModule}
-                }, 
+        const questions = await Question.aggregate(
+            [
+                { $match: {icfesModuleId: ObjectId(icfesModule)}},
                 {
                    $sample: {size: numberQuestions}
                 }
-             ]
-         );
-         res.json(questions);
+            ]
+        );
+        res.json(questions);
  
     }catch(err){
          console.log(err);
