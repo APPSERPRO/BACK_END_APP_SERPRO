@@ -8,7 +8,7 @@ const icfesTestController = {};
 //CREATING A NEW TEST
 icfesTestController.getTestByModule = async function(req, res) {
     try {
-        const module = req.params.module;
+        const module = req.params.moduleId;
         const data = await icfesTestModel.find({
             module: module
         });
