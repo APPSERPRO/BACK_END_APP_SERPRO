@@ -70,7 +70,11 @@ QuestionController.getRandomByModule = async function(req, res) {
                 }
             ]
         );
-        res.json(questions);
+        const pruebaAleatoria = {
+            title: 'PRUEBA ALEATORIA',
+            questions
+        }
+        res.json(pruebaAleatoria);
  
     }catch(err){
          console.log(err);

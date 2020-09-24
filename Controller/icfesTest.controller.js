@@ -49,7 +49,7 @@ icfesTestController.getTestWhitQuestions = async function(req, res) {
 
     const test = req.params.testId;
 
-    IcfesTest.find({_id: test},function(err, Tests) {
+    IcfesTest.findOne({_id: test},function(err, Tests) {
         Question.populate(Tests, { path: 'questions' }, function(err, Tests) {
             res.status(200).send(Tests);
         })
