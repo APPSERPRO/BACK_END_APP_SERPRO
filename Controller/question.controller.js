@@ -46,8 +46,9 @@ QuestionController.post = async function(req,res){
                 response.status(500).send({
                     message:'error insertando preguntas'
                 });
+            }else {
+                res.send(response);
             }
-            res.send(response);
         });
     }else {
         res.status(500).send({
