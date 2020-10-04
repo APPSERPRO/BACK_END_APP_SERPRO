@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const dbconfig = require('./db.config');
 //no se logro conectar la configuracion de la base de datos con el uri de la base de datos
 const devUrl = `mongodb+srv://${dbconfig.USER}:${dbconfig.PASSWORD}@${dbconfig.HOST}/${dbconfig.DB}`;
-const uri = process.env.MONGODB_URI || dev_db_url;
+const uri = process.env.MONGODB_URI || devUrl;
 const db = mongoose.connection;
 
 //CONFIRMATION OF THE CONNECTION WITH THE DATABASE
