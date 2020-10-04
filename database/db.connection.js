@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
 const dbconfig = require('./db.config');
 //no se logro conectar la configuracion de la base de datos con el uri de la base de datos
-const uri = "mongodb+srv://saberProPoli:6sXyfujsZ55c4GF@cluster.75pse.mongodb.net/SaberPro";
+const devUrl = `mongodb+srv://${dbconfig.USER}:${dbconfig.PASSWORD}@${dbconfig.HOST}/${dbconfig.DB}`;
+const uri = process.env.MONGODB_URI || dev_db_url;
 const db = mongoose.connection;
 
 //CONFIRMATION OF THE CONNECTION WITH THE DATABASE
