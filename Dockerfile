@@ -1,6 +1,6 @@
 FROM node:12.18.4
 
-COPY ["package.json", "package-lock.json" "/usr/src/back-serpro"]
+COPY ["package.json", "package-lock.json", "/usr/src/back-serpro/"]
 
 WORKDIR /usr/src/back-serpro
 
