@@ -12,10 +12,10 @@ QuestionController.getAll = async function(req, res) {
         const questions = await Question.find();
         res.json(questions);
 
-   }catch{
+   }catch (err) {
         console.log(err);
         res.status(500).send({
-            message: 'some error ocurred'
+            message: 'error ocurred making the query'
         });
    }
 };
@@ -28,7 +28,7 @@ QuestionController.getByIcfesModul = async function(req, res) {
          const questions = await Question.find({"icfesModuleId":icfesModuleId});
          res.json(questions);
  
-    }catch{
+    }catch (err){
          console.log(err);
          res.status(500).send({
              message: 'some error ocurred'
@@ -41,13 +41,14 @@ QuestionController.post = async function(req,res){
     if(req.body){
         console.log(req.body);
         const question = new Question(req.body);
-        question.save((err,response)=>{
+        question.save((err,savedDoc)=>{
             if(err){
-                response.status(500).send({
+                console.log (err);
+                res.status(500).send({
                     message:'error insertando preguntas'
                 });
             }
-            res.send(response);
+            res.send(savedDoc);
         });
     }else {
         res.status(500).send({

@@ -10,6 +10,6 @@ const icfesTestSchema = new Schema ({
     description: String,
     moduleId: {type:ObjectId, ref: IcfesModule},
     questions: [{type: ObjectId, ref: Questions}]
-});
+},{autoCreate: true});
 
 module.exports = mongoose.model('icfes_tests',icfesTestSchema);
