@@ -5,7 +5,7 @@ const {Schema} = mongoose;
 const questionTypeSchema = new Schema ({
     idType:Number,
     questionType: String
-});
+}, {autoCreate: true});
 
 //exports.questionType =questionTypeSchema;
 module.exports = mongoose.model('questions_type',questionTypeSchema);

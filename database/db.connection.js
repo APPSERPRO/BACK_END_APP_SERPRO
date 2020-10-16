@@ -2,7 +2,10 @@ const mongoose = require('mongoose')
 const dbconfig = require('./db.config');
 //no se logro conectar la configuracion de la base de datos con el uri de la base de datos
 const devUrl = `mongodb+srv://${dbconfig.USER}:${dbconfig.PASSWORD}@${dbconfig.HOST}/${dbconfig.DB}`;
-const uri = process.env.MONGODB_URI || devUrl;
+const prodUrl = `${process.env.MONGODB_DRIVER_STRING}://${process.env.MONGODB_USR}:${process.env.MONGODB_PWD}@${process.env.MONGODB_HOST}:${process.env.MONGODB_PORT}/${process.env.MONGODB_DBNAME}`;
+const env = process.env.APP_ENVIRONMENT;
+const uri = process.env.MONGODB_URI || env == 'prod' ? prodUrl : devUrl;
+
 //const uri = "mongodb://serpro-database:27017/SaberPro";
 //mongodb://localhost:27017/SaberPro
 const db = mongoose.connection;
