@@ -47,7 +47,7 @@ QuestionController.post = async function(req,res){
                     message:'error insertando preguntas'
                 });
             }else {
-                res.send(response);
+                res.send(savedDoc);
             }
             res.send(res);
         });
