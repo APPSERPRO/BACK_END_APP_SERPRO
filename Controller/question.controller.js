@@ -39,7 +39,6 @@ QuestionController.getByIcfesModul = async function(req, res) {
 //CREATE A NEW QUESTION
 QuestionController.post = async function(req,res){
     if(req.body){
-        console.log(req.body);
         const question = new Question(req.body);
         question.save((err,savedDoc)=>{
             if(err){

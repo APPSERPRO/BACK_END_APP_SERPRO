@@ -12,7 +12,7 @@ const Answer = new Schema ({
 },{autoCreate: true})
 
 const questionSchema = new Schema ({
-    
+    title: String,
     statement: String,
     icfesModuleId: {type:ObjectId, ref: IcfesModule},
     answers:[Answer], 

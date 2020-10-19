@@ -27,7 +27,6 @@ icfesTestController.getTestByModule = async function(req, res) {
 icfesTestController.post = async function(req, res) {
 
     if (req.body) {
-        console.log(req.body);
         const icfesTestController = new IcfesTest(req.body);
         icfesTestController.save((err, response) => {
             if (err) {
