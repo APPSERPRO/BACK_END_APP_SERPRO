@@ -49,7 +49,7 @@ QuestionController.post = async function(req,res){
             }else {
                 res.send(response);
             }
-            res.send(savedDoc);
+            res.send(res);
         });
     }else {
         res.status(500).send({
