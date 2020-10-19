@@ -9,10 +9,10 @@ const { Schema } = mongoose;
 const Answer = new Schema ({
     statement: String,
     grade : Number
-})
+},{autoCreate: true})
 
 const questionSchema = new Schema ({
-    
+    title: String,
     statement: String,
     icfesModuleId: {type:ObjectId, ref: IcfesModule},
     answers:[Answer], 

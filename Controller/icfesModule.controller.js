@@ -39,9 +39,7 @@ ModuloController.getModulesWithTests = async function(req, res) {
 ModuloController.post = async function(req, res) {
 
     if (req.body) {
-        console.log(req.body);
         const icfesModules = new IcfesModule(req.body);
-        console.log(icfesModules)
         icfesModules.save((err, response) => {
             if (err) {
                 response.status(500).send({
