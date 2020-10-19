@@ -39,7 +39,6 @@ QuestionController.getByIcfesModul = async function(req, res) {
 //CREATE A NEW QUESTION
 QuestionController.post = async function(req,res){
     if(req.body){
-        console.log(req.body);
         const question = new Question(req.body);
         question.save((err,savedDoc)=>{
             if(err){
@@ -47,8 +46,9 @@ QuestionController.post = async function(req,res){
                 res.status(500).send({
                     message:'error insertando preguntas'
                 });
+            }else {
+                res.send(savedDoc);
             }
-            res.send(savedDoc);
         });
     }else {
         res.status(500).send({
@@ -67,7 +67,7 @@ QuestionController.getRandomByModule = async function(req, res) {
             [
                 { $match: {icfesModuleId: ObjectId(icfesModule)}},
                 {
-                   $sample: {size: numberQuestions}
+                    $sample: {size: numberQuestions}
                 }
             ]
         );
