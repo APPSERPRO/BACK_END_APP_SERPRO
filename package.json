@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "API Listar Tests",
     "main": "app.js",
+    "private": "true",
     "repository": {
         "type": "git",
         "url": "https://github.com/APPSERPRO/BACK_END_APP_SERPRO.git"
